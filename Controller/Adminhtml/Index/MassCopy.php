@@ -49,7 +49,6 @@ class MassCopy extends Action
         $this->filter = $filter;
         $this->prodCollFactory = $prodCollFactory;
         $this->productRepository = $productRepository;
-        $this->logger = $logger;
         $this->data = $data;
         parent::__construct($context);
     }
@@ -64,7 +63,7 @@ class MassCopy extends Action
      */
     public function execute()
     {
-        $copyto = $this->getRequest()->getParam('iscopy');
+        $copyto = $this->getRequest()->getParam('iscopy'); 
         $collection = $this->filter->getCollection($this->prodCollFactory->create());
 	     //$collection->addAttributeToSelect('*')->addAttributeToFilter('color', array('eq' => '5'));
         $count=0;

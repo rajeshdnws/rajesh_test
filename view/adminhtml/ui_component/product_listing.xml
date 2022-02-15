@@ -2,19 +2,19 @@
 <listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <listingToolbar name="listing_top">
         <massaction name="listing_massaction">
-            <action name="is_copy_products">
+            <action name="iscopy">
                 <settings>
-                    <type>is_copy_products</type>
+                    <type>iscopy</type>
                     <label translate="true">Copy products</label>
-                         <actions>
-                        <action name="used">
+                    <actions>
+                        <action name="0">
                             <type>used</type>
                             <label translate="true">Used</label>
                             <url path="copyproduct/index/massCopy">
                                 <param name="iscopy">used</param>
                             </url>
                         </action>
-                        <action name="refurbished">
+                        <action name="1">
                             <type>refurbished</type>
                             <label translate="true">Refurbished</label>
                             <url path="copyproduct/index/massCopy">
@@ -23,7 +23,8 @@
                         </action>
                     </actions>
                 </settings>
-            </action>
+           </action>
+
         </massaction>
     </listingToolbar>
 </listing>

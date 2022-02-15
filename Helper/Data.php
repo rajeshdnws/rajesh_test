@@ -14,6 +14,7 @@ use Magento\UrlRewrite\Model\Exception\UrlAlreadyExistsException;
 use Magento\Catalog\Model\Attribute\ScopeOverriddenValue;
 use Magento\Store\Model\Store;
 use Magento\Catalog\Api\Data\ProductInterface;
+use Psr\Log\LoggerInterface;
 class Data extends AbstractHelper
 
 {
@@ -36,16 +37,19 @@ class Data extends AbstractHelper
         Context $context,
         ProductFactory $productFactory,
         ScopeOverriddenValue $scopeOverriddenValue,
-        MetadataPool $metadataPool
+        MetadataPool $metadataPool,
+        LoggerInterface $logger
     )
     {
 
         $this->productFactory = $productFactory;
         $this->scopeOverriddenValue = $scopeOverriddenValue;
         $this->metadataPool = $metadataPool;
+        $this->logger = $logger;
+
         parent::__construct($context);
     }
-    public function SaveWithCondition($product,$copyto)
+     public function SaveWithCondition($product,$copyto)
     {
         try
         {
@@ -74,11 +78,12 @@ class Data extends AbstractHelper
 			$duplicate->setData('meta_description',$this->checkWord($product->getMetaDescription()?$product->getMetaDescription():$product->getName(),0,$copyto));
 			$duplicate->setWebsiteIds($websiteIds);
 			$duplicate->setCategoryIds($categoryIds);
-			$duplicate->save();       
+			$duplicate->save();
+            $this->logger->info("Copy product ".$product->getSku().' to '.$duplicate->getSku());    
             return true;
-        }
+        }  
       catch (\Exception $e) {
-         $e->getMessage();
+         $this->logger->info("Copy product ".$product->getSku().' error '.$e->getMessage());  
         return false;  
     }
 
