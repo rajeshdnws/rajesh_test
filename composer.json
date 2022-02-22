@@ -1,23 +1,26 @@
 {
-    "name": "rajeshdnws/module-test",
-    "description": "Testing module",
-    "type": "magento2-module",
-    "version": "dev",
-    "license": "GPL-3.0",
-    "authors": [
-        {
-            "name": "Rajesh",
-            "email": "Rajeshdnw@gmail.com"
-        }
-    ],
-    "minimum-stability": "dev",
-    "require": {},
-    "autoload": {
-        "files": [
-            "registration.php"
-        ],
-        "psr-4": {
-            "Rajesh\\Test\\": ""
-        }
+  "name": "rajeshdnws/rajesh_test",
+  "description": "Magento 2 test module",
+  "type": "magento2-module",
+  "version": "1.0.0",
+  "license": "Open Source License",
+  "keywords": [
+      "magento 2"
+      
+  ],
+  "authors": [
+    {
+      "name": "rajeshdnws",
+      "email": "rajeshdnw@gmail.com",
+      "role": "Developer"
     }
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Rajesh\\Test\\": ""
+    }
+  }
 }
